@@ -1,6 +1,6 @@
 
 import type { Client } from 'tmi.js';
-import { chatStore } from '../stores/store';
+import { chatStore } from '@stores/store.js';
 
 async function fetchTwitchLiveChatMessages(client: Client) {
   // client.connect();

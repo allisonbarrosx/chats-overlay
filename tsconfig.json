@@ -10,7 +10,13 @@
 		"sourceMap": true,
 		"strict": true,
 		"module": "NodeNext",
-		"moduleResolution": "nodenext"
+		"moduleResolution": "nodenext",
+    "allowSyntheticDefaultImports": true,
+		"baseUrl": ".",
+    "paths": {
+      "@shared/*": ["src/shared/*"],
+      "@stores/*": ["src/stores/*"]
+    }
 	}
 	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
 	// except $lib which is handled by https://svelte.dev/docs/kit/configuration#files
