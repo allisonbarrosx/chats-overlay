@@ -1,6 +1,6 @@
 import { get } from "svelte/store";
-import { proxies, type ChatMessage } from "@shared/constants.js";
-import { chatStore, youtubeLiveInfoStore } from "@stores/store.js";
+import { proxies, type ChatMessage } from "../shared/constants.js";
+import { chatStore, youtubeLiveInfoStore } from "../stores/store.js";
 
 async function fetchYoutubeMessages(videoId: string): Promise<void> {
   try {
