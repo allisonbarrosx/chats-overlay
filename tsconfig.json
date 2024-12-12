@@ -9,8 +9,8 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"module": "NodeNext",
-		"moduleResolution": "nodenext",
+		// "module": "NodeNext", // already configured on .sveltekit
+		// "moduleResolution": "nodenext", // already configured on .sveltekit
     "allowSyntheticDefaultImports": true,
 	}
 	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias

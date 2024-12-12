@@ -38,3 +38,7 @@ main,
 .message {
   animation: fadeInSlideIn 0.3s ease-out forwards;
 }
+
+.message .emote {
+  vertical-align: text-bottom;
+}
