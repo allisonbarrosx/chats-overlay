@@ -51,7 +51,7 @@ function createChatStore() {
 }
 
 function createYoutubeLiveInfo() {
-  const { subscribe, update, set } = writable<YoutubeLiveInfo>();
+  const { subscribe, update, set } = writable<YoutubeLiveInfo>(initialValue);
 
   return {
     subscribe,
