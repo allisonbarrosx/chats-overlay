@@ -14,7 +14,7 @@ function startEventInterval(eventName: string) {
     eventStore.set({ type: eventName, detail: { } });
     // Reset the store to avoid duplicate handling
     setTimeout(() => eventStore.set(null), 0);
-  }, 5000);
+  }, 3000);
 }
 
 // Function to stop the interval

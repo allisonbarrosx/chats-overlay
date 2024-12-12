@@ -29,8 +29,13 @@
     node.scroll({ top: node.scrollHeight + 8, behavior: "smooth" }); // + 8 padding
   };
 
-  $: if ($eventStore && ytInfoStore?.isChannelLive !== false) {
-      fetchYoutubeLiveChatMessages(youtubeUser);
+  $: if ($eventStore && ytInfoStore.isChannelLive !== false && ytInfoStore.isFetching == false) {
+    fetchYoutubeLiveChatMessages(youtubeUser);
+  }
+
+  function resetStores() {
+    chatStore.reset();
+    youtubeLiveInfoStore.reset();
   }
 
   onMount(() => {
@@ -46,13 +51,15 @@
     }
     
     if (youtubeUser) {
-      startEventInterval(eventNames.youtube)
+      fetchYoutubeLiveChatMessages(youtubeUser).then(() => {
+        startEventInterval(eventNames.youtube);
+      });
     }
 
     return () => {
-      chatStore.reset();
       client && client.disconnect();
       stopEventInterval();
+      resetStores();
     };
   });
 </script>

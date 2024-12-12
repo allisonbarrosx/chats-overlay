@@ -68,17 +68,20 @@ async function fetchYoutubeLiveChatMessages(
   const youtubeLiveInfo = get(youtubeLiveInfoStore);
   console.log('youtubeLiveInfo', youtubeLiveInfo)
 
-  if (youtubeLiveInfo === undefined || youtubeLiveInfo.liveId === undefined) {
-    youtubeLiveInfoStore.setStatusChannel(false);
-
-    const ytInfo = await getLiveVideoId(userChannel);
-    if (ytInfo) {
-      youtubeLiveInfoStore.addLiveId((ytInfo as { liveId: string }).liveId );
-      youtubeLiveInfoStore.setStatusChannel(true);
-    }
+  if (youtubeLiveInfo.isChannelLive === true
+    && youtubeLiveInfo.liveId !== null
+  ) {
+    youtubeLiveInfoStore.setIsFetchingData(true);
+    await fetchYoutubeMessages(youtubeLiveInfo.liveId);
+    youtubeLiveInfoStore.setIsFetchingData(false);
+    return;
   }
 
-  youtubeLiveInfo?.liveId && await fetchYoutubeMessages(youtubeLiveInfo.liveId);
+  const ytInfo = await getLiveVideoId(userChannel);
+  if (ytInfo) {
+    youtubeLiveInfoStore.addLiveId((ytInfo as { liveId: string }).liveId );
+    youtubeLiveInfoStore.setStatusChannel(true);
+  }
 }
 
 export { getLiveVideoId, fetchYoutubeMessages, fetchYoutubeLiveChatMessages };

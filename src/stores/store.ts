@@ -12,7 +12,10 @@ interface ChatMessage {
 interface YoutubeLiveInfo {
   liveId: string | null;
   isChannelLive?: boolean;
+  isFetching: boolean;
 }
+
+const initialValue = { liveId: null, isFetching: false, isChannelLive: false };
 
 function createChatStore() {
   const { subscribe, update, set } = writable<ChatMessage[]>([]);
@@ -48,17 +51,16 @@ function createChatStore() {
 }
 
 function createYoutubeLiveInfo() {
-  const { subscribe, update } = writable<YoutubeLiveInfo>();
+  const { subscribe, update, set } = writable<YoutubeLiveInfo>();
 
   return {
     subscribe,
     addLiveId: (liveId: string) => {
-      update((ytLiveInfo) => {
-        ytLiveInfo = { liveId };
-        return ytLiveInfo;
-      });
+      update((ytLiveInfo) => ({...ytLiveInfo, liveId}));
     },
-    setStatusChannel: (status: boolean) => update((ytLiveInfo) => ytLiveInfo = { ...ytLiveInfo, isChannelLive: status })
+    setStatusChannel: (status: boolean) => update((ytLiveInfo) => ({ ...ytLiveInfo, isChannelLive: status })),
+    setIsFetchingData: (isFetching: boolean) => update((ytLiveInfo) => ({...ytLiveInfo, isFetching})),
+    reset: () => set(initialValue)
   };
 }
 
