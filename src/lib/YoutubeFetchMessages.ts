@@ -16,7 +16,7 @@ async function fetchYoutubeMessages(videoId: string): Promise<void> {
         username: item.author,
         message: item.message,
         platform: "youtube",
-        uniqueId: `${item.messageId}${Date.now()}${Math.floor(Math.random() * 999) + 1}`,
+        uniqueId: item.messageId,
         usernameColor: randomColor
       });
     });
