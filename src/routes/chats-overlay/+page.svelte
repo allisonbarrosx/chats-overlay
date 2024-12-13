@@ -138,6 +138,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: end;
+		max-width: 23rem;
 	}
 
 	#combined-messages ul li {

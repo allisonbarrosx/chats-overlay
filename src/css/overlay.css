@@ -37,6 +37,9 @@ main,
 
 .message {
   animation: fadeInSlideIn 0.3s ease-out forwards;
+  /* Fixed so twitch chat can spam copy pasta */
+  padding-inline: .25rem;
+  padding-block: .75rem;
 }
 
 .message .emote {
