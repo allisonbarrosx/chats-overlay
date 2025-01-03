@@ -1,23 +1,33 @@
 // "https://corsproxy.io/?",
 const proxies = [
-  "https://api.codetabs.com/v1/proxy/?quest=",
-  "https://api.allorigins.win/get?url=",
+	'https://api.codetabs.com/v1/proxy/?quest=',
+	'https://api.allorigins.win/get?url='
 ];
 
 const eventNames = {
-  youtube: 'fetchYoutubeMessages'
-}
+	youtube: 'fetchYoutubeMessages'
+};
 
 // Define the response type for live chat messages
 interface ChatMessage {
-  author: string;
-  message: string;
-  messageId: string;
+	author: string;
+	message: string;
+	messageId: string;
 }
 
-export {
-  proxies,
-  eventNames
-};
+interface YoutubeChatResponse {
+	id: string;
+	etag: string;
+	authorDetails: {
+		displayName: any;
+		profileImageUrl: any;
+	};
+	snippet: {
+		displayMessage: any;
+		publishedAt: string;
+	};
+}
 
-export type { ChatMessage };
+export { proxies, eventNames };
+
+export type { ChatMessage, YoutubeChatResponse };

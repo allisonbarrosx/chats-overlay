@@ -3,6 +3,6 @@
   import { onMount } from 'svelte';
 
   onMount(() => {
-      goto('/chats-overlay');
+      goto('/chats-overlay2');
   });
 </script>

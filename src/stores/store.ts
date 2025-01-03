@@ -32,15 +32,15 @@ function createChatStore() {
             m.uniqueId === msg.uniqueId,
         );
 
-        if (!isDuplicate && msg.platform === 'youtube') {
-          const isDuplicateId = messages.some(
-            (m) => m.uniqueId === msg.uniqueId
-          );
-          if (isDuplicateId) {
-            // Sometimes youtube sends the same element with the same Id but different messages
-            msg.uniqueId = `${msg.uniqueId}${Date.now()}${Math.floor(Math.random() * 999) + 1}`;
-          }
-        }
+        // if (!isDuplicate && msg.platform === 'youtube') {
+        //   const isDuplicateId = messages.some(
+        //     (m) => m.uniqueId === msg.uniqueId
+        //   );
+        //   if (isDuplicateId) {
+        //     // Sometimes youtube sends the same element with the same Id but different messages
+        //     msg.uniqueId = `${msg.uniqueId}${Date.now()}${Math.floor(Math.random() * 999) + 1}`;
+        //   }
+        // }
 
         if (!isDuplicate) {
           return [...messages, msg].slice(-50); // Keep the last 50 messages
