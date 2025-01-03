@@ -61,5 +61,29 @@ export async function GET({ url }) {
   // Update the nextPageToken for subsequent requests
   nextPageToken = chatData.nextPageToken || null;
 
-	return json(newMessages);
+	// return json(newMessages);
+
+	// Return the live chat messages
+	const response = new Response(JSON.stringify(newMessages), {
+		status: 200,
+		headers: {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',  // Allowing all origins, adjust for security as needed
+			'Access-Control-Allow-Methods': 'GET',
+			'Access-Control-Allow-Headers': 'Content-Type',
+		},
+	});
+
+	return response;
+}
+
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,  // No Content for the preflight request
+    headers: {
+      'Access-Control-Allow-Origin': '*',  // Allow all origins or specify a specific one
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',  // List allowed methods
+      'Access-Control-Allow-Headers': 'Content-Type',  // Allow specific headers
+    },
+  });
 }
