@@ -49,11 +49,11 @@ function createChatStore() {
         return messages;
       });
 
-      setTimeout(() => {
-        update((messages) =>
-          messages.filter((m) => m.uniqueId !== msg.uniqueId),
-        );
-      }, 15000); // 15 seconds of screen time KEKW
+      // setTimeout(() => {
+      //   update((messages) =>
+      //     messages.filter((m) => m.uniqueId !== msg.uniqueId),
+      //   );
+      // }, 15000); // 15 seconds of screen time KEKW
     },
     reset: () => set([]),
     set: (value: ChatMessage[]) => set(value),
